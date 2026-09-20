@@ -1,0 +1,19 @@
+fields:
+  date:
+    box:
+    - 775
+    - 62
+    - 1016
+    - 107
+  numeric_amount:
+    box:
+    - 70
+    - 380
+    - 520
+    - 443
+  sayad_number:
+    box:
+    - 185
+    - 116
+    - 447
+    - 145

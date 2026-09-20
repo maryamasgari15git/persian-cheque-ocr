@@ -1,0 +1,12 @@
+
+opencv-python
+numpy
+pyyaml
+docaligner-docsaid
+onnxruntime
+torch
+pytesseract
+fastapi
+uvicorn
+python-multipart
+jinja2

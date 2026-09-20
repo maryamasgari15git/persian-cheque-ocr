@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تست OCR چک</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; }
+        h1 { color: #333; }
+        .upload-box { border: 2px dashed #999; padding: 30px; text-align: center; border-radius: 8px; }
+        img { max-width: 100%; border: 1px solid #ccc; margin-top: 10px; }
+        .crop-item { display: inline-block; margin: 10px; text-align: center; }
+        .crop-item img { max-width: 250px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>تست پردازش چک</h1>
+
+    <div class="upload-box">
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br><br>
+            <button type="submit">پردازش کن</button>
+        </form>
+    </div>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if aligned_image %}
+        <h2>عکس صاف‌شده</h2>
+        <img src="data:image/jpeg;base64,{{ aligned_image }}">
+
+        <h2>فیلدهای جدا شده</h2>
+        {% for name, img_b64 in crops.items() %}
+            <div class="crop-item">
+                <p>{{ name }}</p>
+                <img src="data:image/jpeg;base64,{{ img_b64 }}">
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
